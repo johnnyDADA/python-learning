@@ -63,7 +63,16 @@ b.clear()  #清空列表
 del b  #直接删除整个列表
 del b[0:2]  #删除 '11'  'asa' 切片删除
 
+c=[1,2,3,6,7,5,4]
+b.sort()  #正向排序  1-7
+b.sort(reversr=True)  #逆向排序  7-1
+b.reverse()   #反转   4576321
 
+列表转换成字符串
+join
+print( ','.join([str(_) for _ in range(100, -1, -1)]))  #输出100,99,98,....,0  字符串
+字符串转换成列表
+split
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 180824
 #猜字游戏
@@ -187,6 +196,55 @@ x = True; y = False; x or y返回True。短路计算在这里也适用
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 int :  bit_length   #返回位长
+shop_cart = []
+goods = [
+{"name": "电脑", "price": 199},
+{"name": "鼠标", "price": 100},
+{"name": "游艇", "price": 200},
+{"name": "美女", "price": 9999}
+]
+
+while 1:
+    salary = input("请输入用户余额[quit结束]:")
+    if salary.isdigit():
+        salary = int(salary)
+        break
+    elif salary == "quit":
+        exit("")
+    else:
+        print("please enter the number")
+
+while 1:
+    print("shop list".center(50, '*'))
+    for  index, i in enumerate(goods):    #枚举列表中的元素以及下标以作为购买商品的ID号
+        print(index, i)
+    choose_number = input("请输入购买商品编号[quit结束]:")
+    if choose_number.isdigit():
+        choose_number = int(choose_number)
+        shopping_list = []
+        if 0 <= choose_number < len(goods):
+            shopping_list.append(goods[choose_number])
+            if salary >= shopping_list[0]["price"]:
+              shop_cart.append(goods[choose_number])
+              salary -= shopping_list[0]['price']
+              print("当前购买的商品",shopping_list, "当前用户余额{salary}".format(salary=salary))
+            else:
+                print("余额不足")
+        else:
+            print("无效的商品choose_number.lower() 编号")
+    elif choose_number == 'quit':
+
+        print("购买的商品".center(50,"*"))
+        for y in shop_cart:
+            print(y)
+        exit()
+    else:
+        print("无效的输入")
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
 
 
