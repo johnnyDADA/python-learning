@@ -77,7 +77,11 @@ print( ','.join([str(_) for _ in range(100, -1, -1)]))  #输出100,99,98,....,0 
 s='qwer'
 l=list(s)
 print(l)  >  ['q', 'w', 'e', 'r', 't']
+
 split
+s='qwer'
+l=s.split()
+l=['qwer']
 
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -99,6 +103,7 @@ dic1.pop('sex')  #删除 sex 键对应的数据，返回值为被删除的键值
 dic1.pop('ss',None)   #删除不存在的数据时，不报错，返回设置的None值（这个可以随意设置返回的文字）
 dic1.popitem()   #随机删除，返回被删除的元素，以元组形式
 dic1.clear()   #清空字典
+del dic1['name']  #无返回值
 
 改：
 dic1['age'] = 16  #有键值对，直接覆盖原有的
@@ -107,12 +112,19 @@ dic={'name':'jin', 'age':18, 'sex':male}
 dic1={'name':'sa','weight':75}
 dic1.update(dic)   #有的键值对覆盖，没有的在后面添加，dic不变，dic1有变化
 
+查：
 dic={'name':'jin', 'age':18, 'sex':male}
 dic.keys()  #键
 dic.values()  #值
 dic.items()  #键值对，以列表形式
 for i in dic:
     print(i)    #输出的是字典的键  
+
+for k,v in dic:
+    print(k,v)    #只打印键，值，以字符串的形式打印其具体值
+
+
+
 
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 180824
