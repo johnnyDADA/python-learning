@@ -341,6 +341,96 @@ while 1:
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
+import time
+import sys
+
+goods = [
+    {'name': 'computer', 'price': 4399},
+    {'name': 'watch',    'price': 1299},
+    {'name': 'phone',    'price': 6399},
+    {'name': 'car',      'price': 9999},
+]
+
+shop_cart = []
+
+funccode = [
+    {1: 'shopping car'},
+    {2: 'crypto'}
+]
+
+count = 0
+pwd0 = int(input('please set the password of system:'))
+raw_pwd = pwd0 ^ 707128
+print('''done, exit the system.....
+
+''')
+
+time.sleep(1)
+
+
+pwd1 = int(input("welcome ,please input the password of DON's systme:"))
+flag = ((pwd1 ^ 707128) == raw_pwd)
+
+while not flag:
+    pwd1 = int(input('sorry ,the password is wrong, please try again:'))
+    if (pwd1 ^ 707128) != raw_pwd:
+        print("sorry, you have tried but ur code isn't right, system shutdown..")
+        sys.exit()
+    else:
+        pass
+    break
+
+choose = int(input('system login succeed, please select the funccode:'))
+
+if choose == 1:
+    while 1:
+        salary = input("请输入用户余额[quit结束]:")
+        if salary.isdigit():
+            salary = int(salary)
+            break
+        elif salary == "quit":
+            exit("")
+        else:
+            print("please enter the number")
+
+    while 1:
+        print()
+        print("shop list".center(50, '*'))
+        for index, i in enumerate(goods):  # 枚举列表中的元素以及下标以作为购买商品的ID号
+            print(index, i)
+        choose_number = input("请输入购买商品编号[quit结束]:")
+        print()
+        if choose_number.isdigit():
+            choose_number = int(choose_number)
+            shopping_list = []
+            if 0 <= choose_number < len(goods):
+                shopping_list.append(goods[choose_number])
+                if salary >= shopping_list[0]["price"]:
+                    shop_cart.append(goods[choose_number])
+                    salary -= shopping_list[0]['price']
+                    print("当前购买的商品", shopping_list, "当前用户余额{salary}".format(salary=salary))
+                    print()
+                else:
+                    print("余额不足")
+                    print()
+            else:
+                print("无效的商品choose_number.lower() 编号")
+                print()
+        elif choose_number == 'quit':
+
+            print("购买的商品".center(50, "*"))
+            print()
+            for y in shop_cart:
+                print(y)
+                print()
+            sys.exit()
+        else:
+            print("无效的输入")
+            print()
+
+
+
+
 
 
 
