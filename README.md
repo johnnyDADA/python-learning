@@ -197,14 +197,19 @@ f.open('log', mode='a', encoding='utf-8')
 f.write('sadas')
 f.close()
 
+光标：  文件指针
 调整光标，实现从头读取文件,是按照字节定光标位置的，一个中文用3个字节去定位：
-f.seek(0)
+f.seek(0)    #指定光标移动到某个位置
 
 获取光标当前的位置：
 f.tell()
 
+f.truncate()    #截取文件  
+
 读取一行数据
 f.readline()
+    一行一行读取
+    不知道在哪里结束的读取操作
 
 每一行当成列表中的一个元素，添加到列表中，一次性读取整个文件，可能存在读取大文件占满整个内存的情况
 f.readlines()
@@ -219,11 +224,33 @@ os.remove('文件名')
 对文件进行重命名：
 os.rename('旧文件名','新文件名')
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+修改文件：
 
+# 文件是不能修改的
+with open('test',encoding='utf-8') as f, open('test.bak',encoding='utf-8') as f2:
+    for line in f:
+        if 'johnny' in line:
+	    line = line.replace('johnny','alpha')
+	#写文件
+	f2.write(line)
+
+
+import os 
+os.remove('test')  #删除文件
+os.rename('test.bak','test')    #重命名文件
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+20190108
 函数：
 在函数中一旦写了  return， 就结束后续代码的执行，结束整个函数体
-return可以返回任意类型的数据
+
+没有返回值：  返回 none
+    不写return
+    只写return：结束一个函数的继续
+    return None   --不常用
+
+返回一个值：
+    return可以返回任意类型的数据
+    只要返回了，就可以收到数据
 
 
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
